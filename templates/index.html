@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Case Management System</title>
+    <style>
+        /* General body styles */
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+            font-size: 20px; /* Increased base font size */
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 50px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 48px; /* Increased header font size */
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1400px; /* Increased width of the container */
+            margin: 60px auto;
+            padding: 0 50px;
+        }
+
+        .case-list {
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 30px;
+        }
+
+        .case-list li {
+            background-color: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 22px; /* Increased font size for case list items */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .case-list a {
+            font-size: 24px; /* Increased font size for the link */
+            color: #007bff;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .case-list a:hover {
+            text-decoration: underline;
+        }
+
+        .add-case-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 20px 40px;
+            font-size: 22px;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            margin-top: 40px;
+        }
+
+        .add-case-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Additional padding for better spacing */
+        .case-item {
+            padding: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Legal Case Management System</h1>
+    </header>
+
+    <div class="container">
+        <a href="{{ url_for('add_case') }}" class="add-case-btn">Add New Case</a>
+        
+        <h2 style="font-size: 32px; color: #007bff; text-align: center; margin-top: 60px;">Case List</h2>
+        
+        <ul class="case-list">
+            {% for case in cases %}
+                <li class="case-item">
+                    <span>Case: <strong>{{ case['case_name'] }}</strong></span>
+                    <a href="{{ url_for('case_detail', case_id=case['case_id']) }}">View Details</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Payment</title>
+    <style>
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+            font-size: 18px;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 42px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 30px;
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #007bff;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="date"] {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 18px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 18px;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Legal Case Management System</h1>
+    </header>
+
+    <div class="container">
+        <div class="form-container">
+            <h2>Add Payment for Case: {{ case['case_name'] }}</h2>
+            <form method="POST" action="{{ url_for('add_payment', case_id=case['case_id']) }}">
+                <label for="amount">Payment Amount:</label>
+                <input type="text" id="amount" name="amount" required><br>
+                
+                <label for="payment_date">Payment Date:</label>
+                <input type="date" id="payment_date" name="payment_date" required><br>
+                
+                <input type="submit" value="Add Payment">
+            </form>
+
+            <a href="{{ url_for('case_detail', case_id=case['case_id']) }}" class="back-link">Back to Case Details</a>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Case</title>
+    <style>
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+            font-size: 18px; /* Increased base font size for readability */
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 42px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 30px;
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #007bff;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="number"], textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 18px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 18px;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Legal Case Management System</h1>
+    </header>
+
+    <div class="container">
+        <div class="form-container">
+            <h2>Add a New Case</h2>
+            <form method="POST">
+                <label for="case_name">Case Name:</label>
+                <input type="text" id="case_name" name="case_name" required><br>
+                
+                <label for="case_description">Case Description:</label>
+                <textarea id="case_description" name="case_description" required></textarea><br>
+                
+                <label for="client_id">Client ID:</label>
+                <input type="number" id="client_id" name="client_id" required><br>
+                
+                <input type="submit" value="Add Case">
+            </form>
+
+            <a href="{{ url_for('index') }}" class="back-link">Back to Case List</a>
+        </div>
+    </div>
+
+</body>
+</html>
